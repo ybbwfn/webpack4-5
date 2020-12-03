@@ -1,0 +1,43 @@
+@red:red;
+@green:green;
+
+.color-red{
+    color: @red;
+}
+.color-green{
+    color: @green;
+}
+
+.bg-red{
+    background-color: @red;
+}
+.bg-green{
+    background-color: @green;
+}
+
+.bg-img-mixin() {
+width: 100px;
+height: 100px;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+background-position: 0 0;
+}
+.img-box{
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: 0 0;
+}
+.tu1{
+    .bg-img-mixin();
+    background-image: url(./assets/img/leftImg.png);
+}
+.tu2{
+    .bg-img-mixin();
+    background-image: url(./assets/img/success.png);
+}
+.tu3{
+    .bg-img-mixin();
+    background-image: url(./assets/img/teacherleft.png);
+}
