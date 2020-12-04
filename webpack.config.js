@@ -8,7 +8,8 @@ module.exports = {
     entry: resolve('src/index.js'),
     output: {
         filename:"bundle.js",
-        path: resolve('dist')
+        path: resolve('dist'),
+        publicPath: "./"
     },
     module:{
         rules:[
@@ -38,25 +39,9 @@ module.exports = {
                 }
             },
             {
-                test: /\.(html)$/,
-                use: {
-                  loader: 'html-loader',
-                  options: {
-                    attrs: [':data-src']
-                  }
-                }
-              }
-            // {
-            //     test: /\.html$/,
-            //     use: [{
-            //         loader: 'html-loader',
-            //         options: {
-            //             minimize: true,
-            //             removeComments: false,
-            //             collapseWhitespace: false
-            //         }
-            //      }]
-            // }
+                test: /\.html$/,
+                loader: 'html-loader',
+            }
         ]
     },
     plugins:[
