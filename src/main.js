@@ -13,9 +13,9 @@
 
 // 运行指令
 // webpack ./src/index.js -o ./build/main.js --mode=development
-// import './assets/css/base.css'
-import './base.css'
-import './common.less'
+import './assets/css/base.css'
+import './assets/css/common.less'
+import './assets/font/iconfont.css'
 function add(x,y){
   return x+y;
 }
