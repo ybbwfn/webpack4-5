@@ -23,6 +23,11 @@ module.exports = {
             filename: "index.html",
             template: "./src/public/index.html",
         }),
+        new htmlWebpackPlugin({
+            // favicon: "./public/favicon.ico",
+            filename: "ceshi1.html",
+            template: "./src/public/ceshi1.html",
+        }),
         new CleanWebpackPlugin(),
     ],
     module: {
@@ -37,7 +42,6 @@ module.exports = {
                 test:/\.(less|css)$/,
                 //use执行顺序：从右到左，从下到上
                 use:[
-
                     // 创建style标签，将js中的样式资源插入进行，添加到head中生效
                     'style-loader',
                     //将css文件变成commonjs模块加载js中，里面内容是样式字符串
@@ -76,6 +80,6 @@ module.exports = {
     output: {
         path: path.join(__dirname, "dist"),
         filename: "app.[hash:16].js",
-        publicPath: "./", // 也可以用来处理路径问题，加在所有文件路径前的根路径
+        publicPath: "/", // 也可以用来处理路径问题，加在所有文件路径前的根路径
     },
 };
