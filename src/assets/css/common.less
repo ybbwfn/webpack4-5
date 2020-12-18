@@ -41,3 +41,37 @@ background-position: 0 0;
     .bg-img-mixin();
     background-image: url(../img/teacherleft.png);
 }
+
+.waves{
+    height: 150px;
+    position: relative;
+    margin-bottom: -30px;
+    overflow: hidden;
+    img {
+        width: 4800px;
+        width: 100%;
+        height: 150px;
+    }
+    .index_lang1 {
+        position: absolute;
+        left: 0;
+        width: 4800px;
+        z-index: 3;
+        animation: index_lang1 20s linear infinite;
+    }
+    .index_lang2 {
+        position: absolute;
+        left: -2400px;
+        width: 4800px;
+        z-index: 2;
+        animation: index_lang2 15s linear .2s infinite;
+    }
+}
+@keyframes index_lang1{
+    from {left: 0px;}
+    to {left: -2400px}
+}
+@keyframes index_lang2{
+    from {left: -2400px}
+    to {left: 0px}
+}

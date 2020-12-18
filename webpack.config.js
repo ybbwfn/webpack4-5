@@ -9,13 +9,14 @@ module.exports = {
     devServer: {
         // 本地服务器代理
         contentBase: path.join(__dirname, "dist"), //指定在哪个目录下找要加载的文件
-        compress: true,
+        compress: true,//启动gzip
         port: 8080, // 配置端口
+        open:true, //自动打开
         hot: true, // 配置热更新
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: "css/[name].css",
             ignoreOrder: false,
         }),
         new htmlWebpackPlugin({
@@ -36,18 +37,40 @@ module.exports = {
                 //解析字体
                 test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
                 loader: "file-loader", // url-loader 也可以用来解析字体
+                options:{
+                    outputPath:"font"
+                }
             },
             {
                 //匹配哪些文件
                 test:/\.(less|css)$/,
                 //use执行顺序：从右到左，从下到上
                 use:[
+                    // 压缩成一个css 与style-loader互斥
+                    // MiniCssExtractPlugin.loader,
+
+
                     // 创建style标签，将js中的样式资源插入进行，添加到head中生效
                     'style-loader',
                     //将css文件变成commonjs模块加载js中，里面内容是样式字符串
                     'css-loader',
                     'less-loader',
-                ]
+                    //css兼容性处理：postcss--》postcss-loader postcss-preset-env
+                    //帮postcss找到package.json中的browserslist中的配置，加载指定css样式兼容性样式
+                    // {
+                    //     loader:'postcss-loader',
+                    //     options:{
+                    //         ident:'postcss',
+                    //         plugins:()=>[
+                    //             require('postcss-preset-env')
+                    //         ]
+                    //     }
+                    // },
+                    
+                ],
+                // options:{
+                //     outputPath:"style"
+                // }
             },
             {
 
@@ -58,7 +81,8 @@ module.exports = {
                     limit: 8* 1024,
                     // 关闭es6
                     esModule:true,
-                    name:'[hash:10].[ext]' //不重复名字
+                    name:'[hash:10].[ext]', //不重复名字
+                    outputPath:"images"
                 }
             },
             {
