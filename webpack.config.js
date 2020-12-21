@@ -11,7 +11,7 @@ module.exports = {
         contentBase: path.join(__dirname, "dist"), //指定在哪个目录下找要加载的文件
         compress: true,//启动gzip
         port: 8080, // 配置端口
-        open:true, //自动打开
+        open: true, //自动打开
         hot: true, // 配置热更新
     },
     plugins: [
@@ -37,15 +37,15 @@ module.exports = {
                 //解析字体
                 test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
                 loader: "file-loader", // url-loader 也可以用来解析字体
-                options:{
-                    outputPath:"font"
+                options: {
+                    outputPath: "font"
                 }
             },
             {
                 //匹配哪些文件
-                test:/\.(less|css)$/,
+                test: /\.(less|css)$/,
                 //use执行顺序：从右到左，从下到上
-                use:[
+                use: [
                     // 压缩成一个css 与style-loader互斥
                     // MiniCssExtractPlugin.loader,
 
@@ -58,18 +58,18 @@ module.exports = {
                     //css兼容性处理：postcss--》postcss-loader postcss-preset-env
                     //帮postcss找到package.json中的browserslist中的配置，加载指定css样式兼容性样式
                     {//css兼容 postcss-loader postcss-preset-env
-                        loader:"postcss-loader",
-                        options:{
-                            postcssOptions:{
-                                ident:"postcss",
-                                    plugins:[
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                ident: "postcss",
+                                plugins: [
                                     require("postcss-preset-env")()
                                 ]
                             }
                         }
                     },
                     'less-loader',
-                    
+
                 ],
                 // options:{
                 //     outputPath:"style"
@@ -79,13 +79,13 @@ module.exports = {
 
                 // 处理图片资源,但是处理不了html中img的路径问题
                 test: /\.(jpg|png|gif)$/,
-                loader:'url-loader',
-                options:{
-                    limit: 8* 1024,
+                loader: 'url-loader',
+                options: {
+                    limit: 8 * 1024,
                     // 关闭es6
-                    esModule:true,
-                    name:'[hash:10].[ext]', //不重复名字
-                    outputPath:"images"
+                    esModule: true,
+                    name: '[hash:10].[ext]', //不重复名字
+                    outputPath: "images"
                 }
             },
             {
