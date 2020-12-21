@@ -54,18 +54,21 @@ module.exports = {
                     'style-loader',
                     //将css文件变成commonjs模块加载js中，里面内容是样式字符串
                     'css-loader',
-                    'less-loader',
+
                     //css兼容性处理：postcss--》postcss-loader postcss-preset-env
                     //帮postcss找到package.json中的browserslist中的配置，加载指定css样式兼容性样式
-                    // {
-                    //     loader:'postcss-loader',
-                    //     options:{
-                    //         ident:'postcss',
-                    //         plugins:()=>[
-                    //             require('postcss-preset-env')
-                    //         ]
-                    //     }
-                    // },
+                    {//css兼容 postcss-loader postcss-preset-env
+                        loader:"postcss-loader",
+                        options:{
+                            postcssOptions:{
+                                ident:"postcss",
+                                    plugins:[
+                                    require("postcss-preset-env")()
+                                ]
+                            }
+                        }
+                    },
+                    'less-loader',
                     
                 ],
                 // options:{
