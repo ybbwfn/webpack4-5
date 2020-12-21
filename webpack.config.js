@@ -39,14 +39,30 @@ module.exports = {
                 //设置语法规则 eslint eslint-loader
                 //为了使用airbnb    eslint-config-airbnb-base  eslint-plugin-import
                 test: /\.js$/,
-                loader: 'eslint-loader',
                 exclude: /node_modules/,
-                enforce: "pre",
                 include: [path.resolve(__dirname, 'src')], // 指定检查的目录
-                options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
-                    fix: true,//自动修复
-                    // formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
-                }
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                ['babel-preset-env', {
+                                    targets: {
+                                        browser: ['chrome']
+                                    }
+                                }]
+                            ],
+                        }
+                    }
+                    // {
+                    //     loader:'eslint-loader',
+                    //     options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
+                    //         enforce: "pre",//enforce  1. pre 优先处理2. normal 正常处理（默认）3. inline 其次处理4. post 最后处理
+                    //         fix: true,//自动修复
+                    //         // formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
+                    //     },
+                    // }
+                ]
             },
             {
                 //解析字体

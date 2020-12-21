@@ -15,7 +15,7 @@
 import './assets/css/base.css';
 import './assets/css/common.less';
 import './assets/font/iconfont.css';
-import aaaa from './aa';
+import ceshi from './ceshi';
 
 function add1(x, y) {
   return x + y;
@@ -23,4 +23,4 @@ function add1(x, y) {
 // eslint-disable-next-line
 console.log(add1(2, 8));
 // eslint-disable-next-line
-console.log(aaaa(1, 2));
+console.log(ceshi(1, 2));
