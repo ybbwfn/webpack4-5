@@ -34,15 +34,13 @@ module.exports = {
     module: {
         rules: [
             {
-
-                //eslint 检查自己写的代码，exclude掉不检查的；配置package.json
-                //设置语法规则 eslint eslint-loader
-                //为了使用airbnb    eslint-config-airbnb-base  eslint-plugin-import
                 test: /\.js$/,
                 exclude: /node_modules/,
                 include: [path.resolve(__dirname, 'src')], // 指定检查的目录
                 use: [
                     {
+                        // es6基本语法 babel-preset-env
+                        // es6全部兼容包 @babel/polyfill
                         loader: 'babel-loader',
                         options: {
                             presets: [
@@ -55,6 +53,9 @@ module.exports = {
                         }
                     },
                     {
+                        //eslint 检查自己写的代码，exclude掉不检查的；配置package.json
+                        //设置语法规则 eslint eslint-loader
+                        //为了使用airbnb    eslint-config-airbnb-base  eslint-plugin-import
                         loader: 'eslint-loader',
                         options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
                             enforce: "pre",//enforce  1. pre 优先处理2. normal 正常处理（默认）3. inline 其次处理4. post 最后处理

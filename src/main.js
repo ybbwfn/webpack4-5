@@ -12,10 +12,11 @@
 
 // 运行指令
 // webpack ./src/index.js -o ./build/main.js --mode=development
+import '@babel/polyfill';
 import './assets/css/base.css';
 import './assets/css/common.less';
 import './assets/font/iconfont.css';
-import ceshi from './ceshi';
+import { ceshi, promise1 } from './ceshi';
 
 function add1(x, y) {
   return x + y;
@@ -24,3 +25,8 @@ function add1(x, y) {
 console.log(add1(2, 8));
 // eslint-disable-next-line
 console.log(ceshi(1, 2));
+
+promise1().then((res) => {
+  console.log(res);
+  console.log(222222222);
+});
