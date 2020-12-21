@@ -20,5 +20,7 @@ import aaaa from './aa';
 function add1(x, y) {
   return x + y;
 }
+// eslint-disable-next-line
 console.log(add1(2, 8));
+// eslint-disable-next-line
 console.log(aaaa(1, 2));

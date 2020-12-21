@@ -34,17 +34,17 @@ module.exports = {
     module: {
         rules: [
             {
-                
-               //eslint 检查自己写的代码，exclude掉不检查的；配置package.json
-               //设置语法规则 eslint eslint-loader
-               //为了使用airbnb    eslint-config-airbnb-base  eslint-plugin-import
+
+                //eslint 检查自己写的代码，exclude掉不检查的；配置package.json
+                //设置语法规则 eslint eslint-loader
+                //为了使用airbnb    eslint-config-airbnb-base  eslint-plugin-import
                 test: /\.js$/,
                 loader: 'eslint-loader',
-                exclude:/node_modules/,
+                exclude: /node_modules/,
                 enforce: "pre",
                 include: [path.resolve(__dirname, 'src')], // 指定检查的目录
                 options: { // 这里的配置项参数将会被传递到 eslint 的 CLIEngine 
-                    fix:true,
+                    fix: true,//自动修复
                     // formatter: require('eslint-friendly-formatter') // 指定错误报告的格式规范
                 }
             },
