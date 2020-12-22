@@ -28,5 +28,5 @@ console.log(ceshi(1, 2));
 
 promise1().then((res) => {
   console.log(res);
-  console.log(222222222);
+  console.log(444444444444444444444);
 });
