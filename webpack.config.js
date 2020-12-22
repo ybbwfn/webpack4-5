@@ -44,12 +44,15 @@ module.exports = {
                         loader: 'babel-loader',
                         options: {
                             presets: [
-                                ['babel-preset-env', {
-                                    targets: {
-                                        browser: ['chrome']
+                                [
+                                    "@babel/preset-env",
+                                    {
+                                        useBuiltIns: "usage",
+                                        corejs: 3
                                     }
-                                }]
+                                ]
                             ],
+                            // plugins: ["@babel/plugin-transform-runtime"]
                         }
                     },
                     {
@@ -79,11 +82,11 @@ module.exports = {
                 //use执行顺序：从右到左，从下到上
                 use: [
                     // 压缩成一个css 与style-loader互斥
-                    // MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
 
 
                     // 创建style标签，将js中的样式资源插入进行，添加到head中生效
-                    'style-loader',
+                    // 'style-loader',
                     //将css文件变成commonjs模块加载js中，里面内容是样式字符串
                     'css-loader',
 

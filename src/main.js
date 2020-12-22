@@ -12,7 +12,7 @@
 
 // 运行指令
 // webpack ./src/index.js -o ./build/main.js --mode=development
-import '@babel/polyfill';
+// import '@babel/polyfill';
 import './assets/css/base.css';
 import './assets/css/common.less';
 import './assets/font/iconfont.css';
