@@ -69,6 +69,7 @@ module.exports = {
         open: true, //自动打开
         hot: true, // 配置热更新 开启HMR功能
     },
+    devtool: 'eval-source-map',//构建代码映射源代码，方便排错,开发用eval-source-map   生产用source-map
     plugins: [
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
