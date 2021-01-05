@@ -2,6 +2,7 @@
 node_modules
 *.rar
 /dist
+/dist1
 /TestForMySelf
 
 # local env files

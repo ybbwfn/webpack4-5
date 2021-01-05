@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 把样式提
 const { CleanWebpackPlugin } = require("clean-webpack-plugin"); // 清除构建目录的插件
 const optimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");//css压缩
 
+//package.json 加  "sideEffects": false表示去除所有副作用
+
 const commonCssLoader = [
     // 压缩成一个css 与style-loader互斥
     MiniCssExtractPlugin.loader,
@@ -22,7 +24,8 @@ const commonCssLoader = [
                 plugins: [
                     require("postcss-preset-env")()
                 ]
-            }
+            },
+            // cacheDirectory: true
         }
     },
 ];
@@ -41,7 +44,8 @@ const commonJsLoader = [
                     }
                 ]
             ],
-            plugins: ["@babel/plugin-transform-runtime"]
+            plugins: ["@babel/plugin-transform-runtime"],
+            cacheDirectory: true
         }
     },
     {
@@ -59,8 +63,8 @@ const commonJsLoader = [
 
 module.exports = {
     entry: "./src/main.js", // 打包入口文件
-    mode: "development", // 使用开发模式
-    // mode: "production", // 使用开发模式
+    // mode: "development", // 使用开发模式
+    mode: "production", // 使用开发模式
     devServer: {
         // 本地服务器代理
         contentBase: path.join(__dirname, "dist"), //指定在哪个目录下找要加载的文件
@@ -72,7 +76,7 @@ module.exports = {
     devtool: 'eval-source-map',//构建代码映射源代码，方便排错,开发用eval-source-map   生产用source-map
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].css",
+            filename: "css/[name].[chunkhash:8].css",
             ignoreOrder: false,
         }),
         new htmlWebpackPlugin({

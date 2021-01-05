@@ -16,17 +16,7 @@
 import './assets/css/base.css';
 import './assets/css/common.less';
 import './assets/font/iconfont.css';
-import { ceshi, promise1 } from './ceshi';
+import { ceshi } from './ceshi';
 
-function add1(x, y) {
-  return x + y;
-}
-// eslint-disable-next-line
-console.log(add1(2, 8));
-// eslint-disable-next-line
-console.log(ceshi(1, 2));
-
-promise1().then((res) => {
-  console.log(res);
-  console.log(444444444444444444444);
-});
+const a = ceshi(1, 2);
+console.log(a);
